@@ -22,20 +22,18 @@
             for(var i =0; i < listOfAnchorElems.length; i++){
                 listOfAnchorElems[i].parentElement.setAttribute("class", "nav");
             }
-            if (location.hash) {
+            if (location.hash && $Router.pathMap[location.hash.split('#')[1]]) {
                 $Router.go(location.hash);
             } else if ($Router.otherwiseURL) {
                 location.hash = $Router.otherwiseURL;
             }
         };
     $Router.go = function (hashPath) {
-        if ($Router.pathMap[hashPath.split('#')[1]]) {
-            document
-                .querySelector("a[href='"+hashPath+"']")
-                .parentElement
-                .setAttribute("class","nav active");
-            $Router.route(hashPath);
-        }
+        document
+            .querySelector("a[href='"+hashPath+"']")
+            .parentElement
+            .setAttribute("class","nav active");
+        $Router.route(hashPath);
     };
     $Router.config = function (options) {
         var typeOfObj = getType(options);
