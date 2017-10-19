@@ -1,22 +1,39 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 <style>
     .container{
         max-width: 1000px;
         margin: 0 auto 0;
-        padding: 20px 10px;
-        color: #333;
+        padding: 30px 15px;
+        color: #555;
+        font-family: 'Roboto Slab', serif;
     }
     .container>div{
-        margin-top: 10px;
-    }
-    .container>div.step{
-        margin-top: 30px;
+        margin-top: 20px;
+        text-align: justify;
     }
     .code{
-        margin: 5px 0;
-        padding: 10px;
-        background: #fff;
+        margin: 10px 0;
+        padding: 15px 10px;
+        background: #0289ff;
         border: 1px solid #eddeed;
         border-radius: 5px;
+        color: #fff;
+        font-size: 17px;
+        font-family: monospace;
+        position: relative;
+        word-break: break-word;
+    }
+    .code:after{
+        content:attr(data-language);
+        font-size: 35px;
+        font-weight: 700;
+        color: rgba(255,255,255,0.2);
+        position: absolute;
+        right: 10px;
+        top: 10%;
+    }
+    .code.js{
+        background: #ff8d00;
     }
 </style>
 <div class="container">
@@ -28,8 +45,26 @@
     </div>
     <div class="step">
         Add the script to the end of your body
-        <div class="code">
+        <div class="code" data-language="html">
             &lt;script src="../pathto/route-now.js"&gt;&lt;/script&gt;
+        </div>
+    </div>
+    <div>
+        Now add the Router outlet where you want your views to be populated
+        <div class="code" data-language="html">
+            &lt;div router-outlet&gt;&lt;/div&gt;
+        </div>
+    </div>
+    <div>
+        Finally, map the paths to your templates and you are done.
+        <div class="code js" data-language="js">
+            $Router.config([<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'home',templateUrl:'partial/home.html'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'options',templateUrl:'partial/options.html'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'about',templateUrl:'partial/about.html'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'thankyou',templateUrl:'partial/thankyou.html'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{otherwise:'home'}<br/>
+            ]);<br/>
         </div>
     </div>
 </div>

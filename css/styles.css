@@ -21,7 +21,7 @@ html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family:
 }
 
 .navbar{
-    background: #fff;
+    background: #ffa638;
     text-align: center;
     font-size: 0px;
 }
@@ -32,6 +32,16 @@ html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family:
     transition: all 300ms;
     font-size: 15px;
     color: #333;
+    transition: all 300ms;
+}
+
+@media only screen and (max-width: 500px) {
+    .navbar .nav{
+        width: 50%;
+    }
+    .navbar .nav.active:after{
+        border-color: transparent !important;
+    }
 }
 
 .navbar .nav:hover{

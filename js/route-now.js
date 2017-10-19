@@ -66,10 +66,10 @@
             if(this.readyState == 4) {
                 switch(this.status){
                     case 200:
-                        document.querySelector("div[router-outlet]").innerHTML = this.responseText;
+                        document.querySelector("[router-outlet]").innerHTML = this.responseText;
                         break;
                     case 404:
-                        document.querySelector("div[router-outlet]").innerHTML = $Router.noRouteDefinedTemplate;
+                        document.querySelector("[router-outlet]").innerHTML = $Router.noRouteDefinedTemplate;
                         break;
                 }
             }
