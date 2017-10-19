@@ -3,10 +3,10 @@
     var $Router = {},
         getType = function (genericObject) {return Object.prototype.toString.call(genericObject).replace(/[\[\]]/g,'').split(' ')[1];},
         validatePathToMap = function (pathObj) {
-            if (!pathObj.path) {
+            if (!pathObj.path && !pathObj.otherwise) {
                 throw new Error("Please Provide a Path");
-            } else if (!pathObj.templateUrl) {
-                throw new Error("Please Provide a valid Template Url");
+            } else if (!pathObj.templateUrl && !pathObj.otherwise) {
+                throw new Error("Please Provide a valid Template Url for '"+pathObj.path+"' Path");
             }
         },
         configurePathMap = function (pathToMap) {
@@ -14,8 +14,8 @@
                 $Router.pathMap = {};
             }
             validatePathToMap(pathToMap);
-            $Router.pathMap[pathToMap.path] = pathToMap.templateUrl; 
-            console.info('Mapped #'+pathToMap.path+' ==> '+pathToMap.templateUrl);
+            !pathToMap.otherwise && ($Router.pathMap[pathToMap.path] = pathToMap.templateUrl);
+            pathToMap.otherwise && ($Router.otherwiseURL = "#"+pathToMap.otherwise);
         },
         hasRoutingChanged = function(){
             var listOfAnchorElems = document.querySelectorAll(".nav a");
@@ -23,13 +23,20 @@
                 listOfAnchorElems[i].parentElement.setAttribute("class", "nav");
             }
             if (location.hash) {
-                document
-                    .querySelector("a[href='"+location.hash+"']")
-                    .parentElement
-                    .setAttribute("class","nav active");
-                $Router.route(location.hash);
+                $Router.go(location.hash);
+            } else if ($Router.otherwiseURL) {
+                location.hash = $Router.otherwiseURL;
             }
         };
+    $Router.go = function (hashPath) {
+        if ($Router.pathMap[hashPath.split('#')[1]]) {
+            document
+                .querySelector("a[href='"+hashPath+"']")
+                .parentElement
+                .setAttribute("class","nav active");
+            $Router.route(hashPath);
+        }
+    };
     $Router.config = function (options) {
         var typeOfObj = getType(options);
         switch (typeOfObj) {
@@ -56,7 +63,6 @@
         "</div>";
     $Router.route = function (hashToRoute) {
         hashToRoute = hashToRoute.split('#')[1];
-        console.log('Routing to ==> '+$Router.pathMap[hashToRoute]);
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4) {
