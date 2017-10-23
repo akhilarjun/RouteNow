@@ -27,7 +27,25 @@
             } else if ($Router.otherwiseURL) {
                 location.hash = $Router.otherwiseURL;
             }
+        },
+        congigureRouter = function(opts){
+            $Router.options = Object.assign({},$Router.options,opts);
+            console.log("$router ==> ",$Router);
         };
+    $Router.options = {
+        customErrorPageUrlSet : false,
+        customErrorPageUrl : undefined,
+        customErrorPageTemplateSet : false,
+        customErrorPageTemplate : undefined,
+        showErrorPage : true,
+        activateLinks : true,
+        activateLinkClass: "active",
+        deActivateLinkClass: "",
+        beforeRouteChange: undefined,
+        afterRouteChange: undefined,
+        onRouteChangeError: undefined,
+        routerOutletSelector: "router-outlet"
+    };
     $Router.go = function (hashPath) {
         document
             .querySelector("a[href='"+hashPath+"']")
@@ -35,21 +53,22 @@
             .setAttribute("class","nav active");
         $Router.route(hashPath);
     };
-    $Router.config = function (options) {
-        var typeOfObj = getType(options);
+    $Router.config = function (paths, options) {
+        var typeOfObj = getType(paths);
         switch (typeOfObj) {
             case 'Array':
-                for (var index=0; index < options.length; index++) {
-                    configurePathMap(options[index]);
+                for (var index=0; index < paths.length; index++) {
+                    configurePathMap(paths[index]);
                 }
                 break;
             case 'Object':
-                configurePathMap(options);
+                configurePathMap(paths);
                 break;
             default:
                 throw new Error("Please provide a valid option for configuring the routes");
                 break;
         }
+        congigureRouter(options);
         hasRoutingChanged();
     };
     $Router.noRouteDefinedTemplate = 
@@ -66,10 +85,10 @@
             if(this.readyState == 4) {
                 switch(this.status){
                     case 200:
-                        document.querySelector("[router-outlet]").innerHTML = this.responseText;
+                        document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = this.responseText;
                         break;
                     case 404:
-                        document.querySelector("[router-outlet]").innerHTML = $Router.noRouteDefinedTemplate;
+                        $Router.options.showErrorPage && (document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = $Router.noRouteDefinedTemplate);
                         break;
                 }
             }
