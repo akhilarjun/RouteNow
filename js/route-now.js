@@ -1,6 +1,8 @@
 (function(){
     'use strict';
     var $Router = {},
+        errorURLTriedAndFailed = false,
+        hitCounter = 0,
         getType = function (genericObject) {return Object.prototype.toString.call(genericObject).replace(/[\[\]]/g,'').split(' ')[1];},
         validatePathToMap = function (pathObj) {
             if (!pathObj.path && !pathObj.otherwise) {
@@ -30,12 +32,18 @@
         },
         congigureRouter = function(opts){
             $Router.options = Object.assign({},$Router.options,opts);
-            console.log("$router ==> ",$Router);
+        },
+        routeErrorPage = function() {
+            if ($Router.options.customErrorPageUrl && !errorURLTriedAndFailed) {
+                $Router.route($Router.options.customErrorPageUrl, true);
+            } else if ($Router.options.customErrorPageTemplate){
+                document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = $Router.options.customErrorPageTemplate;
+            }else {
+                document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = $Router.noRouteDefinedTemplate;
+            }
         };
     $Router.options = {
-        customErrorPageUrlSet : false,
         customErrorPageUrl : undefined,
-        customErrorPageTemplateSet : false,
         customErrorPageTemplate : undefined,
         showErrorPage : true,
         activateLinks : true,
@@ -44,14 +52,15 @@
         beforeRouteChange: undefined,
         afterRouteChange: undefined,
         onRouteChangeError: undefined,
-        routerOutletSelector: "router-outlet"
+        routerOutletSelector: "router-outlet",
+        maxReRoute: 20
     };
     $Router.go = function (hashPath) {
         document
             .querySelector("a[href='"+hashPath+"']")
             .parentElement
             .setAttribute("class","nav active");
-        $Router.route(hashPath);
+        $Router.route(hashPath.replace(/#/g,''));
     };
     $Router.config = function (paths, options) {
         var typeOfObj = getType(paths);
@@ -78,8 +87,7 @@
         "<div class='errorStatement_routeNow'>"+
             "Sorry this route is not available"+
         "</div>";
-    $Router.route = function (hashToRoute) {
-        hashToRoute = hashToRoute.split('#')[1];
+    $Router.route = function (hashToRoute,isItCustomURL) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4) {
@@ -88,12 +96,13 @@
                         document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = this.responseText;
                         break;
                     case 404:
-                        $Router.options.showErrorPage && (document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = $Router.noRouteDefinedTemplate);
+                        isItCustomURL && (errorURLTriedAndFailed = true);
+                        $Router.options.showErrorPage && routeErrorPage();
                         break;
                 }
             }
         };
-        xhttp.open("GET",$Router.pathMap[hashToRoute],true);
+        isItCustomURL ? xhttp.open("GET",hashToRoute,true):xhttp.open("GET",$Router.pathMap[hashToRoute],true);
         xhttp.send();
     };
     window.onhashchange = hasRoutingChanged;
