@@ -20,9 +20,9 @@
             pathToMap.otherwise && ($Router.otherwiseURL = "#"+pathToMap.otherwise);
         },
         hasRoutingChanged = function(){
-            var listOfAnchorElems = document.querySelectorAll(".nav a");
+            var listOfAnchorElems = document.querySelectorAll("a."+$Router.options.activateLinkClass);
             for(var i =0; i < listOfAnchorElems.length; i++){
-                listOfAnchorElems[i].parentElement.setAttribute("class", "nav");
+                listOfAnchorElems[i].setAttribute("class", $Router.options.defaultLinkClass);
             }
             if (location.hash && $Router.pathMap[location.hash.split('#')[1]]) {
                 $Router.go(location.hash);
@@ -48,7 +48,7 @@
         showErrorPage : true,
         activateLinks : true,
         activateLinkClass: "active",
-        deActivateLinkClass: "",
+        defaultLinkClass: "",
         beforeRouteChange: undefined,
         afterRouteChange: undefined,
         onRouteChangeError: undefined,
@@ -56,10 +56,10 @@
         maxReRoute: 20
     };
     $Router.go = function (hashPath) {
-        document
+        $Router.options.activateLinks && document
             .querySelector("a[href='"+hashPath+"']")
-            .parentElement
-            .setAttribute("class","nav active");
+            .setAttribute("class",$Router.options.defaultLinkClass+" "+$Router.options.activateLinkClass);
+        $Router.options.beforeRouteChange && $Router.options.beforeRouteChange();
         $Router.route(hashPath.replace(/#/g,''));
     };
     $Router.config = function (paths, options) {
@@ -94,9 +94,10 @@
                 switch(this.status){
                     case 200:
                         document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = this.responseText;
+                        $Router.options.afterRouteChange && $Router.options.afterRouteChange();
                         break;
                     case 404:
-                        isItCustomURL && (errorURLTriedAndFailed = true);
+                        isItCustomURL ? (errorURLTriedAndFailed = true) : ($Router.options.onRouteChangeError && $Router.options.onRouteChangeError());
                         $Router.options.showErrorPage && routeErrorPage();
                         break;
                 }
