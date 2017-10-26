@@ -1,4 +1,4 @@
-html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family: 'Century Gothic';}
+html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family: 'Roboto Slab', serif;}
 
 .clearfix:after,.clearfix:before{content:"";display: table;clear:both;}
 
