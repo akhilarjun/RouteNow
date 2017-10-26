@@ -4,4 +4,6 @@ $Router.config([
     {path:'about',templateUrl:'partial/about.html'},
     {path:'thankyou',templateUrl:'partial/thankyou.html'},
     {otherwise:'home'}
-]);
+],{
+    customErrorPageUrl: 'partial/customError.html'
+});
