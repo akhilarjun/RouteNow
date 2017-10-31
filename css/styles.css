@@ -29,22 +29,20 @@ html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family:
 .navbar .nav{
     display:inline-block;
     cursor: pointer;
-    transition: all 300ms;
     font-size: 15px;
     color: #333;
-    transition: all 300ms;
 }
 
 @media only screen and (max-width: 500px) {
     .navbar .nav{
         width: 50%;
     }
-    .navbar .nav.active:after{
+    .navbar .nav a.active:after{
         border-color: transparent !important;
     }
 }
 
-.navbar .nav:hover{
+.navbar .nav a:hover{
     background: #0289ff;
     color: #fff;
 }
@@ -54,15 +52,16 @@ html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family:
     color: inherit;
     padding: 10px 20px;
     display: block;
+    transition: all 300ms;
 }
 
-.navbar .nav.active{
+.navbar .nav a.active{
     background: #923fc3;
     color: #eee;
     position: relative;
 }
 
-.navbar .nav.active:after{
+.navbar .nav a.active:after{
     position: absolute;
     content: "";
     border: 8px solid transparent;
