@@ -59,7 +59,7 @@
         $Router.options.activateLinks && document
             .querySelector("a[href='"+hashPath+"']")
             .setAttribute("class",$Router.options.defaultLinkClass+" "+$Router.options.activateLinkClass);
-        $Router.options.beforeRouteChange && $Router.options.beforeRouteChange();
+        $Router.options.beforeRouteChange && $Router.options.beforeRouteChange(hashPath.replace(/#/g,''));
         $Router.route(hashPath.replace(/#/g,''));
     };
     $Router.config = function (paths, options) {
@@ -94,10 +94,10 @@
                 switch(this.status){
                     case 200:
                         document.querySelector("["+$Router.options.routerOutletSelector+"]").innerHTML = this.responseText;
-                        $Router.options.afterRouteChange && $Router.options.afterRouteChange();
+                        $Router.options.afterRouteChange && $Router.options.afterRouteChange(hashToRoute);
                         break;
                     case 404:
-                        isItCustomURL ? (errorURLTriedAndFailed = true) : ($Router.options.onRouteChangeError && $Router.options.onRouteChangeError());
+                        isItCustomURL ? (errorURLTriedAndFailed = true) : ($Router.options.onRouteChangeError && $Router.options.onRouteChangeError(hashToRoute));
                         $Router.options.showErrorPage && routeErrorPage();
                         break;
                 }
