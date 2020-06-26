@@ -13,6 +13,14 @@ Add the script to the end of your body
 <script src="../pathto/route-now.js"></script>
 ```
 
+Or use the CDN link
+```html
+<!-- For Non Minified -->
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.1/js/route-now.js"></script>
+<!-- For Minified -->
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.1/js/route-now.min.js"></script>
+```
+
 Now add the Router outlet where the views should be populated
 ```html
 <div router-outlet></div>
