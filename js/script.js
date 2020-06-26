@@ -5,5 +5,30 @@ $Router.config([
     {path:'thankyou',templateUrl:'partial/thankyou.html'},
     {otherwise:'home'}
 ],{
-    customErrorPageUrl: 'partial/customError.html'
+    customErrorPageUrl: 'partial/customError.html',
+    beforeRouteChange: (activePath) => {
+        console.log('Before Route Change =>',activePath);
+    },
+    afterRouteChange: (activePath) => {
+        console.log('After Route Change =>',activePath);
+        ScrollOut();
+        if (activePath === 'options') {
+            document.querySelectorAll('.drawer-menu').forEach(drawer => {
+                drawer.addEventListener('click', (e) => {
+                    let el = e.target;
+                    let targetToScroll = el.dataset.target;
+                    document.querySelectorAll('.drawer-menu').forEach(d => {d.classList='drawer-menu'})
+                    el.classList = "drawer-menu active";
+                    document.getElementById(targetToScroll).scrollIntoView();
+                })
+            });
+        }
+    },
+    onRouteChangeError: (activePath) => {
+        console.log('Route Change Error =>',activePath);
+    }
 });
+
+document.getElementById('goToGithub').addEventListener('click', () => {
+    window.location.href = 'https://github.com/akhilarjun/RouteNow';
+})

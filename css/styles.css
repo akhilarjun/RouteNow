@@ -1,9 +1,22 @@
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+body::-webkit-scrollbar-track {
+    background: #fff;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #2f2f2f;
+  outline: 1px solid slategrey;
+}
+
 html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family: 'Roboto Slab', serif;}
 
 .clearfix:after,.clearfix:before{content:"";display: table;clear:both;}
 
 .banner{
-    padding:100px 20px;
+    padding:100px 20px 80px;
     background:#0289ff;
     color:#fff;
     text-align: center;
@@ -69,4 +82,118 @@ html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family:
     bottom: -16px;
     left: 50%;
     margin-left: -4px;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 0 auto 0;
+    padding: 30px 15px;
+    color: #555;
+}
+
+.container>div{
+    margin-top: 20px;
+    text-align: justify;
+}
+.code{
+    margin: 10px 0;
+    padding: 15px 10px;
+    background: #0289ff;
+    border: 1px solid #eddeed;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 17px;
+    font-family: monospace;
+    position: relative;
+    word-break: break-word;
+    text-align: left;
+}
+
+.code:after{
+    content:attr(data-language);
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.code.js{
+    background: #ff8d00;
+}
+
+.option-heading{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.flex {
+    display: flex;
+}
+
+.no-flex {
+    flex: none;
+}
+
+.left-drawer {
+    width: 25%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 15px;
+    border-right: 1px solid #ddd;
+    position: fixed;
+    box-sizing: border-box;
+}
+
+.drawer-menu {
+    text-align: right;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.drawer-menu:hover, .drawer-menu.active {
+    color: #0289ff;
+}
+
+[data-scroll] {
+    transition: all 1s;
+}
+
+[data-scroll="in"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-scroll="out"] {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.code[data-scroll="in"] {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.code[data-scroll="out"] {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.right-drawer {
+    margin-left: 25%;
+}
+
+button {
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
 }
