@@ -2,6 +2,7 @@
 ![experimental][experimental-badge]
 ![File-Size][size-image]
 ![Contributions-Welcome][contributions-url]
+![Version][version-url]
 
 A new revolutionary small router with no bullshit!
 
@@ -42,3 +43,4 @@ $Router.config([
 [experimental-badge]: https://img.shields.io/badge/Stability-Experimental-orange.svg?style=flat-square
 [size-image]: http://img.badgesize.io/akhilarjun/RouteNow/master/js/route-now.min.js.svg?compression=gzip&style=flat-square&label=Minified%20And%20Gzipped%20Size
 [contributions-url]: https://img.shields.io/badge/Contributions-Welcome-blue.svg?style=flat-square
+[version-url]: https://img.shields.io/github/v/release/akhilarjun/RouteNow?label=Release&style=flat-square
