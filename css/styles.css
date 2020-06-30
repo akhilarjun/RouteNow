@@ -11,7 +11,7 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
 }
 
-html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family: 'Roboto Slab', serif;}
+html,body{padding:0;margin:0;box-sizing: border-box;background:#eee;font-family: 'Roboto Slab', serif;scroll-behavior: smooth;}
 
 .clearfix:after,.clearfix:before{content:"";display: table;clear:both;}
 
