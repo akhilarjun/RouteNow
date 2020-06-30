@@ -109,6 +109,8 @@ window.onhashchange = hasRoutingChanged;
 window.$Router = $Router;
 
 //common modules export
-module.exports = {
-    $Router: $Router
+if (typeof exports === "object") {
+    module.exports = {
+        $Router: $Router
+    }
 }
