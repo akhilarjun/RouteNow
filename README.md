@@ -16,10 +16,12 @@ Add the script to the end of your body
 
 Or use the CDN link
 ```html
-<!-- For Non Minified -->
-<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.1/js/route-now.js"></script>
+<!-- For latest build use @latest -->
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@latest/js/route-now.js"></script>
+<!-- For specific version use the version tag -->
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.2.2/js/route-now.js"></script>
 <!-- For Minified -->
-<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.1/js/route-now.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.2.2/js/route-now.min.js"></script>
 ```
 
 Now add the Router outlet where the views should be populated
