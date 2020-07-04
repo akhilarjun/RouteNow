@@ -61,6 +61,12 @@ $Router.go = function (hashPath) {
     $Router.options.beforeRouteChange && $Router.options.beforeRouteChange(hashPath.replace(/#/g,''));
     $Router.route(hashPath.replace(/#/g,''));
 };
+$Router.hash = (hash) => {
+    if (!hash) {
+        throw new Error("Please provide a valid hash route");
+    }
+    location.hash = hash;
+};
 $Router.config = function (paths, options) {
     var typeOfObj = getType(paths);
     switch (typeOfObj) {
