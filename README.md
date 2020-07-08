@@ -6,6 +6,8 @@
 
 A new revolutionary small router with no bullshit!
 
+RouteNow is a small library that will help you in developing a SinglePage Application without any dependencies like jQuery, AngularJs, vue.js or any of those bulky frameworks.
+
 ## Installation
 Installating RouteNow.js is as easy as it gets.
 
