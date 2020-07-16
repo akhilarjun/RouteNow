@@ -50,6 +50,16 @@ Check the [API options](https://akhilarjun.github.io/RouteNow/#options) for more
 
 >$Router can be directly used as a browser global. 
 
+### Local Setup
+
+A sample ```server.js``` is added with the repo, which spins up a ```Express``` server at port 8080
+
+Install and start the server by
+```js
+npm install
+npm start
+```
+
 ## Changelog
 * v2.0.1 Introducing HTML5 History API's pushState and popState as the default strategy for routing.
 * v1.2.2 Added $Router.hash() method
