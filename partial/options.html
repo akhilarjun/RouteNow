@@ -10,55 +10,61 @@
         <div class="drawer-menu" data-target="after_route_change">After Route Change</div>
         <div class="drawer-menu" data-target="on_route_change_error">On Route Change Error</div>
         <div class="drawer-menu" data-target="router_outlet_selector">Router Outlet Selector</div>
+        <div class="drawer-menu" data-target="routing-strategy">Routing Strategy</div>
     </div>
     <div class="container bl right-drawer">
         <div>
-            The Router can be configured with multiple options depending on the situation. 
+            The Router can be configured with multiple options depending on the situation.
             These options are passed as second object to config function and this is an optional parameter.
         </div>
         <div data-scroll>
             <div class='option-heading' id="custom_error_page_url">Custom Error Page URL</div>
-            By setting this option we can setup cutom template url for our error pages. If not set, the router will use a default error message.
+            By setting this option we can setup cutom template url for our error pages. If not set, the router will use
+            a default error message.
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;customErrorPageUrl: 'partial/customError.html'<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;customErrorPageUrl: 'partial/customError.html'<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="custom_error_page_template">Custom Error Page Template</div>
-            By setting this option we can setup cutom template for our error pages. If not set, the router will use a default error message.
+            By setting this option we can setup cutom template for our error pages. If not set, the router will use a
+            default error message.
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;customErrorPageTemplate: `&lt;div&gt;This is a custom Error Template&lt;/div&gt;`<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;customErrorPageTemplate: `&lt;div&gt;This is a custom Error
+                Template&lt;/div&gt;`<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="show_hide_error_pages">Show/ Hide Error Pages</div>
-            This option is used to show/ hide error pages when the router cannot find configured partials. If not set, the router will show a default error message. <br>
+            This option is used to show/ hide error pages when the router cannot find configured partials. If not set,
+            the router will show a default error message. <br>
             This option defaults to <b>true</b>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;showErrorPage: true<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;showErrorPage: true<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="activate_links">Activate Links</div>
-            When this option is set as 'true' it will set an active marker on the links that are currently clicked, by adding an additional class to the anchor tag. By default the class added is <i>active</i>.<br>
+            When this option is set as 'true' it will set an active marker on the links that are currently clicked, by
+            adding an additional class to the anchor tag. By default the class added is <i>active</i>.<br>
             This option defaults to <b>true</b>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;activateLinks: true<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;activateLinks: true<br />
                 });
             </div>
         </div>
@@ -67,70 +73,90 @@
             This option is used to override the additional class added to the anchor tag that is active.<br>
             This option defaults to <b>active</b>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;activateLinkClass: 'active'<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;activateLinkClass: 'active'<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="default_link_class">Default Link Class</div>
-            This option is used when there are additional classes that should be added to the anchor tags other than <i>activateLinkClass</i>.<br>
-            This option defaults to empty.
+            This option is used when there are additional classes that should be added to the anchor tags other than
+            <i>activateLinkClass</i>.<br>
+            This option defaults to <i>empty</i>.
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;defaultLinkClass: 'someOtherClass'<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;defaultLinkClass: 'someOtherClass'<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="before_route_change">Before Route Change</div>
-            This is a life-cycle hook in Router. Pass a function to this option, to be called each time before the route is changed. The function will be provided with the active path as a parameter<br>
+            This is a life-cycle hook in Router. Pass a function to this option, to be called each time before the route
+            is changed. The function will be provided with the active path as a parameter<br>
             This option defaults to <i>undefined</i>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;beforeRouteChange: (activePath) => {console.log('Before Route Change =>',activePath);}<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;beforeRouteChange: (activePath) => {console.log('Before Route Change
+                =>',activePath);}<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="after_route_change">After Route Change</div>
-            This is a life-cycle hook in Router. Pass a function to this option, to be called each time after the route has changed. The function will be provided with the active path as a parameter<br>
+            This is a life-cycle hook in Router. Pass a function to this option, to be called each time after the route
+            has changed. The function will be provided with the active path as a parameter<br>
             This option defaults to <i>undefined</i>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;afterRouteChange: (activePath) => {console.log('After Route Change =>',activePath);}<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;afterRouteChange: (activePath) => {console.log('After Route Change
+                =>',activePath);}<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="on_route_change_error">On Route Change Error</div>
-            This is a life-cycle hook in Router. Pass a function to this option, to be called every time there is a error during route change. The function will be provided with the active path as a parameter<br>
+            This is a life-cycle hook in Router. Pass a function to this option, to be called every time there is a
+            error during route change. The function will be provided with the active path as a parameter<br>
             This option defaults to <i>undefined</i>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;onRouteChangeError: (activePath) => {console.log('Route Change Error =>',activePath);}<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;onRouteChangeError: (activePath) => {console.log('Route Change Error
+                =>',activePath);}<br />
                 });
             </div>
         </div>
         <div data-scroll>
             <div class='option-heading' id="router_outlet_selector">Router Outlet Selector</div>
             This option can be over-rided if we need a custom selector to act as our Router outlet.<br>
-            This option defaults to <i>router-outlet</i>
+            This option defaults to <b>router-outlet</b>
             <div class="code js" data-language="js">
-                $Router.config([<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;... <br/>
-                ], {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;routerOutletSelector: 'router-outlet'<br/>
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;routerOutletSelector: 'router-outlet'<br />
+                });
+            </div>
+        </div>
+        <div data-scroll>
+            <div class='option-heading' id="routing-strategy">Routing Strategy</div>
+            This option determines your routing strategy. This will by default set the strategy as HTML5 compliant
+            History API. But if you want to use legacy hashing strategy change the option to true<br>
+            This option defaults to <b>false</b>
+            <div class="code js" data-language="js">
+                $Router.config([<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                ], {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;useHashStrategy: false<br />
                 });
             </div>
         </div>

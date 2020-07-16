@@ -1,14 +1,23 @@
 <div class="container">
     <div>
-        <b>RouteNow</b> is a small library that will help you in developing a SinglePage Application without any dependencies like jQuery, AngularJs, vue.js or any of those bulky frameworks.
+        <b>RouteNow</b> is a small library that will help you in developing a SinglePage Application without any
+        dependencies like jQuery, AngularJs, vue.js or any of those bulky frameworks.
     </div>
     <div>
         Installating RouteNow.js is as easy as it gets.
     </div>
     <div class="step">
-        Add the script to the end of your body
+        Add the script to the end of your body for latest version
         <div class="code" data-language="html" data-scroll>
-            &lt;script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.1/js/route-now.min.js"&gt;&lt;/script&gt;
+            &lt;script
+            src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@latest/js/route-now.min.js"&gt;&lt;/script&gt;
+        </div>
+    </div>
+    <div class="step">
+        Or for a specific version
+        <div class="code" data-language="html" data-scroll>
+            &lt;script
+            src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.2.2/js/route-now.min.js"&gt;&lt;/script&gt;
         </div>
     </div>
     <div>
@@ -20,13 +29,13 @@
     <div>
         Finally, map the paths to your templates and you are done.
         <div class="code js" data-language="js" data-scroll>
-            $Router.config([<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;{path:'home',templateUrl:'partial/home.html'},<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;{path:'options',templateUrl:'partial/options.html'},<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;{path:'about',templateUrl:'partial/about.html'},<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;{path:'thankyou',templateUrl:'partial/thankyou.html'},<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;{otherwise:'home'}<br/>
-            ]);<br/>
+            $Router.config([<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'home',templateUrl:'partial/home.html'},<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'options',templateUrl:'partial/options.html'},<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'about',templateUrl:'partial/about.html'},<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;{path:'thankyou',templateUrl:'partial/thankyou.html'},<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;{otherwise:'home'}<br />
+            ]);<br />
         </div>
     </div>
 </div>
