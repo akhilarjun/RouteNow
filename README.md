@@ -46,6 +46,8 @@ $Router.config([
     {otherwise:'home'}
 ]);
 ```
+Check the [API options](https://akhilarjun.github.io/RouteNow/#options) for more customization options
+
 >$Router can be directly used as a browser global. 
 
 ## Changelog
