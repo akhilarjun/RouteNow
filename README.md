@@ -21,9 +21,14 @@ Or use the CDN link
 <!-- For latest build use @latest -->
 <script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@latest/js/route-now.js"></script>
 <!-- For specific version use the version tag -->
-<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.2.2/js/route-now.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v2.0.1/js/route-now.js"></script>
 <!-- For Minified -->
-<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v1.2.2/js/route-now.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/akhilarjun/RouteNow@v2.0.1/js/route-now.min.js"></script>
+```
+
+Use anchor tags with ```r-href``` property to point to your paths
+```html
+<a r-href="home">Home</a>
 ```
 
 Now add the Router outlet where the views should be populated
@@ -42,6 +47,13 @@ $Router.config([
 ]);
 ```
 >$Router can be directly used as a browser global. 
+
+## Changelog
+* v2.0.1 Introducing HTML5 History API's pushState and popState as the default strategy for routing.
+* v1.2.2 Added $Router.hash() method
+* v1.2.1 Bug fix to prevent modules.export from breaking the library in script tags
+* v1.2 Added common modules export support
+* v1.1 First release
 
 
 [experimental-badge]: https://img.shields.io/badge/Stability-Experimental-orange.svg?style=flat-square
