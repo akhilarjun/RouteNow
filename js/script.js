@@ -24,6 +24,12 @@ $Router.config([
                 })
             });
         }
+
+        let anchorList = Array.from(document.querySelectorAll('a[r-href]'));
+        anchorList.forEach(anchor => {
+            let url = anchor.getAttribute('r-href');
+            anchor.setAttribute('href', '#' + url);
+        });
     },
     onRouteChangeError: (activePath) => {
         console.log('Route Change Error =>', activePath);
