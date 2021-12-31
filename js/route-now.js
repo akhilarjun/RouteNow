@@ -28,9 +28,10 @@ var $Router = {},
         }
     },
     resetClassForAnchors = () => {
-        var listOfAnchorElems = document.querySelectorAll("a." + $Router.options.activateLinkClass);
-        for (var i = 0; i < listOfAnchorElems.length; i++) {
-            listOfAnchorElems[i].setAttribute("class", $Router.options.defaultLinkClass);
+        let listOfAnchorElems = document.querySelectorAll("a." + $Router.options.activateLinkClass);
+        for (let element of listOfAnchorElems) {
+            let classes = element.className.replace(/active/, "").trim();
+            element.setAttribute("class", classes + " " + $Router.options.defaultLinkClass);
         }
     },
     hasRoutingChanged = function () {
@@ -90,9 +91,12 @@ $Router.options = {
 $Router.go = function (hashPath) {
     resetClassForAnchors();
     hashPath = hashPath.replace(/#/g, '');
-    $Router.options.activateLinks && document
-        .querySelector("a[r-href='" + hashPath + "']")
-        .setAttribute("class", $Router.options.defaultLinkClass + " " + $Router.options.activateLinkClass);
+
+    let linkQuery = document.querySelector("a[r-href='" + hashPath + "']");
+
+    $Router.options.activateLinks
+        && linkQuery
+        && linkQuery.setAttribute("class", linkQuery.className + " " + $Router.options.defaultLinkClass + " " + $Router.options.activateLinkClass);
     $Router.options.beforeRouteChange && $Router.options.beforeRouteChange(hashPath);
     $Router.route(hashPath);
 };
